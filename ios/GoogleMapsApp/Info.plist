@@ -37,8 +37,12 @@
 			</dict>
 		</dict>
 	</dict>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>In order to direct you to your delivery locations, this app must know your location.</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>In order to direct you to your delivery locations, this app must know your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>In order to direct you to your delivery locations, this app must know your location.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -1,36 +1,24 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-function HomeScreen({navigation}: any) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
+// Screens
+import HomeScreen from './screens/HomeScreen';
+import ListScreen from './screens/ListScreen';
+import MapScreen from './screens/MapScreen';
 
-function DetailsScreen({navigation}: any) {
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Details')}
-      />
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      <Button
-        title="Go back to first screen in stack"
-        onPress={() => navigation.popToTop()}
-      />
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="List" component={ListScreen} />
+    </Tab.Navigator>
   );
 }
 
@@ -45,7 +33,12 @@ const App = () => {
           component={HomeScreen}
           options={{title: 'Overview'}}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="List" component={ListScreen} />
+        <Stack.Screen
+          name="Map"
+          component={MapScreen}
+          options={{title: 'Map'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
